@@ -1,1 +1,0 @@
-# Donos-do-Neg-cio
