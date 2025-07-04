@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Donos do Negócio - Como Abrir Empresa em 2025</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+        }
+        header {
+            background-color: white;
+            border-bottom: 5px solid #0077b6;
+            color: #0077b6;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            display: flex;
+            min-height: calc(100vh - 120px);
+        }
+        .menu-lateral {
+            background-color: #0077b6;
+            color: white;
+            width: 200px;
+            padding: 20px;
+        }
+        .menu-lateral .opcao {
+            margin-bottom: 15px;
+        }
+        .menu-lateral a {
+            color: white;
+            text-decoration: none;
+        }
+        .conteudo {
+            flex: 1;
+            padding: 20px;
+            background-color: white;
+        }
+        footer {
+            background-color: #0077b6;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+        /* Estilos específicos para este artigo */
+        .destaque {
+            background-color: #f0f8ff;
+            border-left: 4px solid #0077b6;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .checklist {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .checklist ul {
+            padding-left: 20px;
+        }
+        .checklist li {
+            margin-bottom: 10px;
+        }
+        .box-alerta {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .tabela-resumo {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .tabela-resumo th, .tabela-resumo td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .tabela-resumo th {
+            background-color: #0077b6;
+            color: white;
+        }
+        .tabela-resumo tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .cta-box {
+            background-color: #e7f5ff;
+            border: 2px solid #0077b6;
+            padding: 20px;
+            text-align: center;
+            margin: 30px 0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>DONOS DO NEGÓCIO</h1>
+    </header>
+
+    <div class="container">
+        <nav class="menu-lateral">
+            <div class="opcao">
+                <a href="/Donos-do-Neg-cio/index.html">INÍCIO</a>
+            </div>
+            <div class="opcao">
+                <a href="/Donos-do-Neg-cio/artigos/artigo1.html">ARTIGOS</a>
+            </div>
+            <div class="opcao">
+                <a href="/Donos-do-Neg-cio/Download/Download.html">DOWNLOAD</a>
+            </div>
+            <div class="opcao">
+                <a href="/Donos-do-Neg-cio/calculadora/calculadora.html">CALCULADORA</a>
+            </div>
+        </nav>
+      
+        <main class="conteudo">
+            <h1 style="text-align: center;">Como Abrir uma Empresa em 2025: Passo a Passo Sem Burocracia (MEI, ME e EIRELI)</h1>
+
+            <div class="destaque">
+                <p><strong>Antes de continuar, você já definiu qual tipo de empresa é ideal para você?</strong></p>
+                <p>Se ainda tem dúvidas entre MEI, ME ou EIRELI, leia primeiro este guia:<br>
+                <a href="artigos/artigo3.html">Como Escolher Seu CNPJ em 2025: MEI, ME ou EIRELI?</a></p>
+                <p><em>Assim, você evita erros que custam caro no futuro!</em></p>
+            </div>
+
+            <p style="text-align: justify; margin-bottom: 20px; text-indent: 30px;">
+                <strong>Você tem uma ótima ideia de negócio e muita vontade de empreender, mas só de pensar em documentos, impostos e burocracia, já quer desistir?</strong>
+            </p>
+            <p style="text-align: justify; margin-bottom: 20px; text-indent: 30px;">
+                Calma! Você não precisa virar expert em direito tributário para abrir sua empresa.
+            </p>
+            <p style="text-align: justify; margin-bottom: 20px; text-indent: 30px;">
+                Neste artigo, vamos direto ao ponto:
+            </p>
+            <ul style="margin-bottom: 20px;">
+                <li>✔ <strong>Onde fazer o registro</strong> (de graça e online)</li>
+                <li>✔ <strong>Quais documentos levar</strong> (sem linguagem jurídica)</li>
+                <li>✔ <strong>Erros que podem custar caro</strong> (para você não cair neles)</li>
+            </ul>
+            <p style="text-align: justify; margin-bottom: 20px; text-indent: 30px;">
+                Tudo explicado passo a passo, como se um amigo estivesse te ajudando. Vamos começar?
+            </p>
+
+            <h2 style="text-align: center; margin-top: 40px;">1. Onde Fazer o Registro (De Graça e Online)</h2>
+
+            <div class="checklist">
+                <h3>✔ MEI (Microempreendedor Individual):</h3>
+                <ul>
+                    <li><strong>Site oficial:</strong> <a href="https://portaldoempreendedor.gov.br" target="_blank">Portal do Empreendedor</a></li>
+                    <li><strong>Tempo:</strong> 30 minutos (registro 100% online).</li>
+                    <li><strong>Custo:</strong> Grátis (não pague intermediários!).</li>
+                </ul>
+            </div>
+
+            <div class="checklist">
+                <h3>✔ ME (Microempresa) ou EIRELI:</h3>
+                <ul>
+                    <li><strong>Plataforma:</strong> <a href="https://www.gov.br/rede-simples" target="_blank">Redesim</a> (envio digital do contrato social).</li>
+                    <li><strong>Custo:</strong> ~R$ 200–500 (depende do cartório).</li>
+                    <li><strong>Dica:</strong> Escolha um contador online para ajudar com o contrato social (evite modelos genéricos).</li>
+                </ul>
+            </div>
+
+            <p style="text-align: justify; margin-bottom: 20px; text-indent: 30px;">
+                <strong>📍 Físico (opcional):</strong><br>
+                Junta Comercial do seu estado (só necessário se o negócio exigir alvará específico, como saúde ou alimentação).
+            </p>
+
+            <div class="box-alerta">
+                <h3>🚨 Cuidado:</h3>
+                <p>Sites falsos cobrando pelo registro do MEI (o governo <strong>não cobra nada</strong>). Sempre use os links oficiais!</p>
+            </div>
+
+            <h2 style="text-align: center; margin-top: 40px;">2. Quais Documentos Levar (Checklist Simplificado)</h2>
+
+            <div class="checklist">
+                <h3>📄 Para MEI:</h3>
+                <ul>
+                    <li>CPF do dono (regularizado na Receita).</li>
+                    <li>Comprovante de endereço atualizado (conta de luz ou telefone).</li>
+                    <li>E-mail e telefone para contato.</li>
+                </ul>
+            </div>
+
+            <div class="checklist">
+                <h3>📑 Para ME/EIRELI:</h3>
+                <ul>
+                    <li>Documentos do sócio(s): RG, CPF, comprovante de endereço.</li>
+                    <li>Contrato social: Defina lucro, responsabilidades e saída de sócios (evite brigas futuras!).</li>
+                    <li>Capital social: Depósito em conta PJ (EIRELI exige R$ 141.412 em 2025).</li>
+                </ul>
+            </div>
+
+            <p style="text-align: justify; margin-bottom: 20px;">
+                <strong>Links Úteis:</strong><br>
+                • <a href="https://www.gov.br/empresas-e-negocios/pt-br" target="_blank">Modelo grátis de contrato social</a> (Portal do Empreendedor)<br>
+                • <a href="https://www.gov.br/empresas-e-negocios/pt-br/cnae" target="_blank">Consulta de CNAE</a> (escolha o código certo para evitar multas)
+            </p>
+
+            <h2 style="text-align: center; margin-top: 40px;">3. Erros que Podem Custar Caro (e Como Evitar)</h2>
+
+            <table class="tabela-resumo">
+                <tr>
+                    <th>Erro</th>
+                    <th>Consequência</th>
+                    <th>Solução</th>
+                </tr>
+                <tr>
+                    <td><strong>💸 CNAE errado</strong></td>
+                    <td>Multa de até R$ 5.000</td>
+                    <td>Use o <a href="https://www.sebrae.com.br/sites/PortalSebrae/ferramentas/qual-e-o-cnae-do-meu-negocio" target="_blank">simulador do SEBRAE</a></td>
+                </tr>
+                <tr>
+                    <td><strong>📉 Cair no Lucro Presumido</strong></td>
+                    <td>+30% de impostos</td>
+                    <td>Só venda para PJ após ativar o Simples Nacional</td>
+                </tr>
+                <tr>
+                    <td><strong>🚫 Não emitir NF-e</strong></td>
+                    <td>Bloqueio do CNPJ</td>
+                    <td>Use <a href="https://notasimples.com.br" target="_blank">Nota Simples</a> ou <a href="https://emiteai.com.br" target="_blank">Emite Aí</a></td>
+                </tr>
+                <tr>
+                    <td><strong>🏦 Conta bancária pessoal</strong></td>
+                    <td>Problemas no IR e crédito</td>
+                    <td>Abra conta PJ grátis (Nubank, Inter, BB)</td>
+                </tr>
+            </table>
+
+            <div class="cta-box">
+                <h3>Quer evitar dor de cabeça?</h3>
+                <p><strong>Baixe nosso checklist completo em PDF</strong> com todos os passos e documentos necessários!</p>
+                <a href="/Donos-do-Neg-cio/Download/Download.html" style="background-color: #0077b6; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block; margin-top: 10px;">BAIXAR CHECKLIST AGORA</a>
+            </div>
+        </main>
+    </div>
+ 
+    <footer>
+        <p>Para serviço personalizado, entre em contato pelo WhatsApp:<br>
+        <strong>Juliana Batista - (88) 98831-4077</strong></p>
+    </footer>     
+    
+</body>
+</html>
