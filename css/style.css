@@ -80,3 +80,113 @@ footer {
     background-color: #f5f5f5;
     padding: 15px;
 }
+/* ESTILOS PARA ARTIGO DE CNPJ */
+.conteudo {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+.titulo-principal {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    font-size: 2.2em;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+}
+
+.destaque {
+    background-color: #f8f9fa;
+    border-left: 4px solid #3498db;
+    padding: 20px;
+    margin: 25px 0;
+    border-radius: 0 5px 5px 0;
+}
+
+.subtitulo {
+    text-align: center;
+    color: #2980b9;
+    margin: 30px 0 20px;
+    font-size: 1.5em;
+}
+
+.paragrafo {
+    text-align: justify;
+    margin-bottom: 20px;
+    text-indent: 30px;
+}
+
+.lista-destaque {
+    margin: 15px 0;
+    padding-left: 40px;
+}
+
+.lista-destaque li {
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.lista-destaque li:before {
+    content: "•";
+    color: #e74c3c;
+    font-weight: bold;
+    position: absolute;
+    left: -20px;
+}
+
+.tabela-comparativa {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 30px 0;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+}
+
+.tabela-comparativa th, .tabela-comparativa td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.tabela-comparativa th {
+    background-color: #3498db;
+    color: white;
+}
+
+.tabela-comparativa tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.tabela-comparativa tr:hover {
+    background-color: #e6f7ff;
+}
+
+.box-importante {
+    background-color: #fff8e1;
+    border-left: 4px solid #ffc107;
+    padding: 20px;
+    margin: 30px 0;
+    border-radius: 0 5px 5px 0;
+}
+
+.texto-centralizado {
+    text-align: center;
+}
+
+.texto-negrito {
+    font-weight: bold;
+}
+
+.link-destaque {
+    color: #2980b9;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.link-destaque:hover {
+    text-decoration: underline;
+    color: #1a5276;
+}
