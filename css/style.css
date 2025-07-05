@@ -42,25 +42,61 @@ header {
 }
 
 .menu-lateral {
-    background-color: #0077b6;
+    background: linear-gradient(to bottom, #0a1f44, #1a3a8f); /* Gradiente combinando com o header */
     color: white;
-    width: 200px;
-    padding: 20px;
+    width: 250px; /* Largura um pouco maior */
+    padding: 30px 20px;
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    border-right: 3px solid #4da6ff; /* Borda azul claro */
 }
 
 .menu-lateral .opcao {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.menu-lateral .opcao:hover {
+    background-color: rgba(77, 166, 255, 0.2); /* Fundo azul claro transparente */
+    transform: translateX(5px); /* Efeito de deslocamento */
 }
 
 .menu-lateral a {
     color: white;
     text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaço entre ícone e texto (se tiver ícones) */
+}
+
+/* Efeito de sublinhado criativo */
+.menu-lateral a::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #4da6ff;
+    transition: width 0.3s ease;
+}
+
+.menu-lateral a:hover::after {
+    width: 100%;
+}
+
+/* Ícones (opcional - use Font Awesome ou SVG) */
+.menu-lateral a::before {
+    content: "→"; /* Pode substituir por um ícone real */
+    color: #4da6ff;
 }
 
 .conteudo {
     flex: 1;
-    padding: 20px;
-    background-color: white;
+    padding: 30px;
+    background-color: #f8f9fa; /* Fundo mais suave */
+    box-shadow: inset 5px 0 10px rgba(0, 0, 0, 0.05); /* Sombra interna */
 }
 
 .sobre-container {
