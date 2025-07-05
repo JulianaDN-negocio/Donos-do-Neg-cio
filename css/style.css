@@ -7,35 +7,34 @@ body {
 }
 
 header {
-    background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
-    border-bottom: 5px solid #0077b6;
-    color: white; /* Mudei para branco para contrastar com o gradiente */
-    padding: 20px 15px; /* Aumentei um pouco o padding */
+    background: linear-gradient(135deg, #0a1f44, #1a3a8f, #0a1f44); /* Azul mais escuro para contrastar */
+    border-bottom: 5px solid #4da6ff; /* Azul claro */
+    color: white;
+    padding: 20px;
     text-align: center;
+    width: 100%;
 }
 
-/* Estilo para o texto da logo */
 .logo-text {
-    font-family: 'Arial Black', 'Segoe UI', sans-serif;
-    font-size: 2.5rem;
-    font-weight: bold;
-    text-transform: uppercase;
+    font-family: 'Montserrat', 'Arial', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: white; /* Texto branco */
+    text-shadow: 
+        0 0 10px rgba(77, 166, 255, 0.8), /* Brilho azul */
+        0 0 20px rgba(77, 166, 255, 0.5);
     letter-spacing: 2px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     margin: 0;
-    background: linear-gradient(to right, #ffffff, #f8f8f8);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    padding: 10px;
     display: inline-block;
-    padding: 5px 15px;
-    border-radius: 5px;
 }
 
-/* Efeito hover opcional */
+/* Efeito de brilho suave no hover */
 .logo-text:hover {
-    transform: scale(1.05);
-    transition: transform 0.3s ease;
+    text-shadow: 
+        0 0 15px rgba(77, 166, 255, 1),
+        0 0 25px rgba(77, 166, 255, 0.7);
+    transition: text-shadow 0.3s ease;
 }
 .container {
     display: flex;
