@@ -115,12 +115,65 @@ header {
     line-height: 1.6;
     margin-bottom: 15px;
 }
-
 footer {
-    background-color: #0077b6;
+    /* Gradiente combinando com o header */
+    background: linear-gradient(135deg, #0a1f44, #1a3a8f, #0a1f44);
     color: white;
     text-align: center;
-    padding: 10px;
+    padding: 25px 10px;
+    border-top: 5px solid #4da6ff; /* Borda azul claro */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efeito de "ondas" ou partículas (opcional) */
+footer::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M1200 0L0 0 892.25 114.72 1200 0z" fill="%234da6ff"></path></svg>') center top no-repeat;
+    background-size: cover;
+}
+
+/* Texto do footer */
+footer p {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+/* Links no footer (se tiver) */
+footer a {
+    color: #4da6ff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+footer a:hover {
+    color: white;
+    text-shadow: 0 0 10px rgba(77, 166, 255, 0.7);
+}
+
+/* Efeito de brilho animado (opcional) */
+footer::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(77, 166, 255, 0.1), transparent 70%);
+    pointer-events: none;
+    animation: pulse 6s infinite alternate;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.3; }
+    100% { opacity: 0.7; }
 }
 
 /* Estilos para artigos */
