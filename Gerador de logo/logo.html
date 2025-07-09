@@ -31,7 +31,92 @@
         </nav>
  </div>
 </main>
+<script>
+    // Função para gerar e baixar a logo
+    function gerarLogo() {
+        // Obter elementos DOM
+        const nomeInput = document.getElementById('nome');
+        const sloganInput = document.getElementById('slogan');
+        const cor1Input = document.getElementById('cor1');
+        const cor2Input = document.getElementById('cor2');
+        const previewDiv = document.getElementById('preview');
+        
+        // Obter valores
+        const nome = nomeInput.value || "Nome da Empresa";
+        const slogan = sloganInput.value;
+        const cor1 = cor1Input.value || "#3498db";
+        const cor2 = cor2Input.value || "#e74c3c";
 
+        // Criar HTML da logo
+        const logoHTML = `
+        <div class="logo-preview" style="
+            background: linear-gradient(135deg, ${cor1}, ${cor2});
+            padding: 25px;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            text-align: center;
+        ">
+            <h1 style="
+                color: white;
+                margin: 0;
+                font-size: 2.2rem;
+                font-weight: 700;
+                text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            ">${nome}</h1>
+            ${slogan ? `<p style="
+                color: rgba(255,255,255,0.9);
+                margin-top: 12px;
+                font-size: 1.1rem;
+                font-style: italic;
+            ">${slogan}</p>` : ''}
+        </div>
+        `;
+
+        // Exibir preview
+        previewDiv.innerHTML = logoHTML;
+        
+        // Carregar biblioteca dom-to-image dinamicamente
+        if (typeof domtoimage === 'undefined') {
+            const script = document.createElement('script');
+            script.src = 'https://unpkg.com/dom-to-image@2.6.0/dist/dom-to-image.min.js';
+            script.onload = () => downloadLogo(previewDiv, nome);
+            document.head.appendChild(script);
+        } else {
+            downloadLogo(previewDiv, nome);
+        }
+    }
+
+    // Função para converter e baixar a logo
+    function downloadLogo(element, nomeEmpresa) {
+        domtoimage.toPng(element)
+            .then(dataUrl => {
+                const link = document.createElement('a');
+                link.download = `logo-${nomeEmpresa.replace(/\s+/g, '-').toLowerCase()}.png`;
+                link.href = dataUrl;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            })
+            .catch(error => {
+                console.error('Erro ao gerar imagem:', error);
+                alert('Erro ao gerar a logo. Recarregue a página e tente novamente.');
+            });
+    }
+
+    // Preview automático ao digitar (opcional)
+    document.addEventListener('DOMContentLoaded', function() {
+        const inputs = ['nome', 'slogan', 'cor1', 'cor2'];
+        inputs.forEach(id => {
+            const input = document.getElementById(id);
+            if (input) {
+                input.addEventListener('input', gerarLogo);
+            }
+        });
+    });
+</script>
 <footer>
         <p>Para serviço personalizado, entre em contato pelo WhatsApp:<br>
         <strong>Juliana Batista - (88) 98831-4077</strong></p>
