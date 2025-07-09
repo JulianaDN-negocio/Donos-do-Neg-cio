@@ -1,126 +1,214 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-     <meta charset="UTF-8">
-    <title>Gerador de Logo</title>
-  <link rel="stylesheet" href="../css/style.css">
-     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3676495749738944"
-     crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <title>Gerador de Logo - Donos do Negócio</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3676495749738944" crossorigin="anonymous"></script>
+    <style>
+        /* ESTILOS ESPECÍFICOS DO GERADOR */
+        .logo-generator {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        .form-group input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .color-pickers {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+        
+        #preview {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: #f9f9f9;
+            border-radius: 8px;
+            text-align: center;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .btn-gerar {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+            display: block;
+            width: 100%;
+            max-width: 200px;
+            margin: 0 auto;
+        }
+        
+        .btn-gerar:hover {
+            background: #45a049;
+        }
+        
+        @media (max-width: 600px) {
+            .color-pickers {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
         <h1>DONOS DO NEGÓCIO</h1>
     </header>
+    
     <div class="container">
         <nav class="menu-lateral">
-              <div class="opcao">
-   <a href="/index.html">INÍCIO</a>
-</div>
-<div class="opcao">
-   <a href="/artigos/artigo1.html">ARTIGOS</a>
-</div>
-<div class="opcao">
-   <a href="/Download/Download.html">DOWNLOAD</a>
-</div>
-<div class="opcao">
-   <a href="/calculadora/calculadora.html">CALCULADORA</a>
-</div>
-          <div class="opcao">
-   <a href="/geradordelogo/logo.html">Crie sua Logo</a>
-</div>
+            <div class="opcao">
+                <a href="/index.html">INÍCIO</a>
+            </div>
+            <div class="opcao">
+                <a href="/artigos/artigo1.html">ARTIGOS</a>
+            </div>
+            <div class="opcao">
+                <a href="/Download/Download.html">DOWNLOAD</a>
+            </div>
+            <div class="opcao">
+                <a href="/calculadora/calculadora.html">CALCULADORA</a>
+            </div>
+            <div class="opcao">
+                <a href="/geradordelogo/logo.html">Crie sua Logo</a>
+            </div>
         </nav>
- </div>
-</main>
-<script>
-    // Função para gerar e baixar a logo
-    function gerarLogo() {
-        // Obter elementos DOM
-        const nomeInput = document.getElementById('nome');
-        const sloganInput = document.getElementById('slogan');
-        const cor1Input = document.getElementById('cor1');
-        const cor2Input = document.getElementById('cor2');
-        const previewDiv = document.getElementById('preview');
         
-        // Obter valores
-        const nome = nomeInput.value || "Nome da Empresa";
-        const slogan = sloganInput.value;
-        const cor1 = cor1Input.value || "#3498db";
-        const cor2 = cor2Input.value || "#e74c3c";
-
-        // Criar HTML da logo
-        const logoHTML = `
-        <div class="logo-preview" style="
-            background: linear-gradient(135deg, ${cor1}, ${cor2});
-            padding: 25px;
-            border-radius: 12px;
-            width: 100%;
-            max-width: 400px;
-            margin: 0 auto;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            text-align: center;
-        ">
-            <h1 style="
-                color: white;
-                margin: 0;
-                font-size: 2.2rem;
-                font-weight: 700;
-                text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-            ">${nome}</h1>
-            ${slogan ? `<p style="
-                color: rgba(255,255,255,0.9);
-                margin-top: 12px;
-                font-size: 1.1rem;
-                font-style: italic;
-            ">${slogan}</p>` : ''}
-        </div>
-        `;
-
-        // Exibir preview
-        previewDiv.innerHTML = logoHTML;
-        
-        // Carregar biblioteca dom-to-image dinamicamente
-        if (typeof domtoimage === 'undefined') {
-            const script = document.createElement('script');
-            script.src = 'https://unpkg.com/dom-to-image@2.6.0/dist/dom-to-image.min.js';
-            script.onload = () => downloadLogo(previewDiv, nome);
-            document.head.appendChild(script);
-        } else {
-            downloadLogo(previewDiv, nome);
-        }
-    }
-
-    // Função para converter e baixar a logo
-    function downloadLogo(element, nomeEmpresa) {
-        domtoimage.toPng(element)
-            .then(dataUrl => {
-                const link = document.createElement('a');
-                link.download = `logo-${nomeEmpresa.replace(/\s+/g, '-').toLowerCase()}.png`;
-                link.href = dataUrl;
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            })
-            .catch(error => {
-                console.error('Erro ao gerar imagem:', error);
-                alert('Erro ao gerar a logo. Recarregue a página e tente novamente.');
-            });
-    }
-
-    // Preview automático ao digitar (opcional)
-    document.addEventListener('DOMContentLoaded', function() {
-        const inputs = ['nome', 'slogan', 'cor1', 'cor2'];
-        inputs.forEach(id => {
-            const input = document.getElementById(id);
-            if (input) {
-                input.addEventListener('input', gerarLogo);
-            }
-        });
-    });
-</script>
-<footer>
+        <main>
+            <section class="logo-generator">
+                <h2>Crie sua Logo Grátis</h2>
+                
+                <div class="form-group">
+                    <label for="nome">Nome da Empresa:</label>
+                    <input type="text" id="nome" placeholder="Ex: Padaria Estrela">
+                </div>
+                
+                <div class="form-group">
+                    <label for="slogan">Slogan (opcional):</label>
+                    <input type="text" id="slogan" placeholder="Ex: O melhor pão da região">
+                </div>
+                
+                <div class="form-group">
+                    <label>Cores da Logo:</label>
+                    <div class="color-pickers">
+                        <div>
+                            <label for="cor1">Principal:</label>
+                            <input type="color" id="cor1" value="#3498db">
+                        </div>
+                        <div>
+                            <label for="cor2">Secundária:</label>
+                            <input type="color" id="cor2" value="#e74c3c">
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="btn-gerar" onclick="gerarLogo()">Baixar Logo</button>
+                
+                <div id="preview">
+                    <!-- Preview aparecerá aqui -->
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <footer>
         <p>Para serviço personalizado, entre em contato pelo WhatsApp:<br>
         <strong>Juliana Batista - (88) 98831-4077</strong></p>
-    </footer>     
+    </footer>
     
+    <script src="https://unpkg.com/dom-to-image@2.6.0/dist/dom-to-image.min.js"></script>
+    <script>
+        // Função para gerar e baixar a logo
+        function gerarLogo() {
+            // Obter elementos DOM
+            const nome = document.getElementById('nome').value || "Nome da Empresa";
+            const slogan = document.getElementById('slogan').value;
+            const cor1 = document.getElementById('cor1').value || "#3498db";
+            const cor2 = document.getElementById('cor2').value || "#e74c3c";
+            const previewDiv = document.getElementById('preview');
+
+            // Criar HTML da logo
+            const logoHTML = `
+                <div style="
+                    background: linear-gradient(135deg, ${cor1}, ${cor2});
+                    padding: 25px;
+                    border-radius: 12px;
+                    width: 100%;
+                    max-width: 400px;
+                    margin: 0 auto;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                    text-align: center;
+                    color: white;
+                ">
+                    <h1 style="
+                        margin: 0;
+                        font-size: 2.2rem;
+                        font-weight: 700;
+                        text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+                    ">${nome}</h1>
+                    ${slogan ? `<p style="
+                        margin-top: 12px;
+                        font-size: 1.1rem;
+                        font-style: italic;
+                        color: rgba(255,255,255,0.9);
+                    ">${slogan}</p>` : ''}
+                </div>
+            `;
+
+            // Exibir preview
+            previewDiv.innerHTML = logoHTML;
+            
+            // Gerar e baixar imagem
+            domtoimage.toPng(previewDiv)
+                .then(function(dataUrl) {
+                    const link = document.createElement('a');
+                    link.download = `logo-${nome.replace(/\s+/g, '-').toLowerCase()}.png`;
+                    link.href = dataUrl;
+                    link.click();
+                })
+                .catch(function(error) {
+                    console.error('Erro ao gerar imagem:', error);
+                    alert('Ocorreu um erro. Recarregue a página e tente novamente!');
+                });
+        }
+
+        // Preview automático ao digitar
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputs = ['nome', 'slogan', 'cor1', 'cor2'];
+            inputs.forEach(id => {
+                const input = document.getElementById(id);
+                if (input) {
+                    input.addEventListener('input', gerarLogo);
+                }
+            });
+        });
+    </script>
 </body>
 </html>
