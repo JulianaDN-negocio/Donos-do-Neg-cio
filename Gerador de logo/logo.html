@@ -26,7 +26,8 @@
             font-weight: bold;
         }
         
-        .form-group input[type="text"] {
+        .form-group input[type="text"], 
+        .form-group select {
             width: 100%;
             padding: 8px;
             border: 1px solid #ddd;
@@ -39,16 +40,38 @@
             margin-top: 0.5rem;
         }
         
+        .modelos-container {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border: 2px solid #eee;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .thumbnail:hover, .thumbnail.active {
+            border: 2px solid #4CAF50;
+            transform: scale(1.05);
+        }
+        
         #preview {
             margin: 2rem 0;
             padding: 1.5rem;
             background: #f9f9f9;
             border-radius: 8px;
             text-align: center;
-            min-height: 150px;
+            min-height: 200px;
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
         }
         
         .btn-gerar {
@@ -63,18 +86,32 @@
             display: block;
             width: 100%;
             max-width: 200px;
-            margin: 0 auto;
+            margin: 20px auto 0;
         }
         
         .btn-gerar:hover {
             background: #45a049;
         }
         
+        .texto-logo {
+            position: absolute;
+            text-align: center;
+            width: 80%;
+            max-width: 300px;
+        }
+        
         @media (max-width: 600px) {
-            .color-pickers {
+            .color-pickers, .modelos-container {
                 flex-direction: column;
             }
+            .thumbnail {
+                width: 100%;
+                height: auto;
+            }
         }
+
+        /* Importação das fontes */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Playfair+Display:wght@700&family=Pacifico&display=swap');
     </style>
 </head>
 <body>
@@ -116,23 +153,32 @@
                 </div>
                 
                 <div class="form-group">
-                    <label>Cores da Logo:</label>
-                    <div class="color-pickers">
-                        <div>
-                            <label for="cor1">Principal:</label>
-                            <input type="color" id="cor1" value="#3498db">
-                        </div>
-                        <div>
-                            <label for="cor2">Secundária:</label>
-                            <input type="color" id="cor2" value="#e74c3c">
-                        </div>
+                    <label for="fonte">Fonte do Texto:</label>
+                    <select id="fonte">
+                        <option value="'Montserrat', sans-serif">Moderno (Montserrat)</option>
+                        <option value="'Playfair Display', serif">Elegante (Playfair)</option>
+                        <option value="'Pacifico', cursive">Criativo (Pacifico)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="cor-texto">Cor do Texto:</label>
+                    <input type="color" id="cor-texto" value="#ffffff">
+                </div>
+                
+                <div class="form-group">
+                    <label>Modelo de Logo:</label>
+                    <div class="modelos-container">
+                        <img src="modelos/logo1.png" onclick="selecionarModelo(1)" class="thumbnail" alt="Modelo 1">
+                        <img src="modelos/logo2.png" onclick="selecionarModelo(2)" class="thumbnail" alt="Modelo 2">
+                        <img src="modelos/logo3.png" onclick="selecionarModelo(3)" class="thumbnail" alt="Modelo 3">
                     </div>
                 </div>
                 
                 <button class="btn-gerar" onclick="gerarLogo()">Baixar Logo</button>
                 
                 <div id="preview">
-                    <!-- Preview aparecerá aqui -->
+                    <!-- Preview será gerado aqui -->
                 </div>
             </section>
         </main>
@@ -145,49 +191,57 @@
     
     <script src="https://unpkg.com/dom-to-image@2.6.0/dist/dom-to-image.min.js"></script>
     <script>
-        // Função para gerar e baixar a logo
-        function gerarLogo() {
-            // Obter elementos DOM
+        let modeloAtual = 1; // Modelo padrão
+        
+        // Função para selecionar modelo
+        function selecionarModelo(num) {
+            modeloAtual = num;
+            
+            // Atualiza visualização dos thumbnails
+            document.querySelectorAll('.thumbnail').forEach((img, index) => {
+                if (index + 1 === num) {
+                    img.classList.add('active');
+                } else {
+                    img.classList.remove('active');
+                }
+            });
+            
+            // Atualiza preview
+            atualizarPreview();
+        }
+        
+        // Função para atualizar a pré-visualização
+        function atualizarPreview() {
             const nome = document.getElementById('nome').value || "Nome da Empresa";
             const slogan = document.getElementById('slogan').value;
-            const cor1 = document.getElementById('cor1').value || "#3498db";
-            const cor2 = document.getElementById('cor2').value || "#e74c3c";
+            const fonte = document.getElementById('fonte').value;
+            const corTexto = document.getElementById('cor-texto').value;
+            
             const previewDiv = document.getElementById('preview');
-
-            // Criar HTML da logo
-            const logoHTML = `
-                <div style="
-                    background: linear-gradient(135deg, ${cor1}, ${cor2});
-                    padding: 25px;
-                    border-radius: 12px;
-                    width: 100%;
-                    max-width: 400px;
-                    margin: 0 auto;
-                    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-                    text-align: center;
-                    color: white;
+            previewDiv.innerHTML = `
+                <img src="modelos/logo${modeloAtual}.png" style="width:100%; max-width:400px;">
+                <div class="texto-logo" style="
+                    font-family: ${fonte};
+                    color: ${corTexto};
+                    ${modeloAtual === 3 ? 'top: 65%;' : 'top: 50%;'}
+                    transform: translate(-50%, -50%);
                 ">
-                    <h1 style="
-                        margin: 0;
-                        font-size: 2.2rem;
-                        font-weight: 700;
-                        text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-                    ">${nome}</h1>
-                    ${slogan ? `<p style="
-                        margin-top: 12px;
-                        font-size: 1.1rem;
-                        font-style: italic;
-                        color: rgba(255,255,255,0.9);
-                    ">${slogan}</p>` : ''}
+                    <h1 style="margin:0; font-size: ${modeloAtual === 2 ? '1.8rem' : '2.2rem'}; 
+                        ${corTexto === '#ffffff' ? 'text-shadow: 1px 1px 3px rgba(0,0,0,0.5);' : ''}">
+                        ${nome}
+                    </h1>
+                    ${slogan ? `<p style="margin-top:8px; font-size:0.9rem;">${slogan}</p>` : ''}
                 </div>
             `;
-
-            // Exibir preview
-            previewDiv.innerHTML = logoHTML;
+        }
+        
+        // Função para gerar e baixar a logo
+        function gerarLogo() {
+            const previewDiv = document.getElementById('preview');
             
-            // Gerar e baixar imagem
             domtoimage.toPng(previewDiv)
                 .then(function(dataUrl) {
+                    const nome = document.getElementById('nome').value || "logo";
                     const link = document.createElement('a');
                     link.download = `logo-${nome.replace(/\s+/g, '-').toLowerCase()}.png`;
                     link.href = dataUrl;
@@ -198,15 +252,16 @@
                     alert('Ocorreu um erro. Recarregue a página e tente novamente!');
                 });
         }
-
-        // Preview automático ao digitar
+        
+        // Atualiza preview quando qualquer campo muda
         document.addEventListener('DOMContentLoaded', function() {
-            const inputs = ['nome', 'slogan', 'cor1', 'cor2'];
-            inputs.forEach(id => {
-                const input = document.getElementById(id);
-                if (input) {
-                    input.addEventListener('input', gerarLogo);
-                }
+            // Seleciona o primeiro modelo por padrão
+            selecionarModelo(1);
+            
+            // Adiciona listeners para todos os campos
+            const campos = ['nome', 'slogan', 'fonte', 'cor-texto'];
+            campos.forEach(id => {
+                document.getElementById(id).addEventListener('input', atualizarPreview);
             });
         });
     </script>
