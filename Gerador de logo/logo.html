@@ -113,6 +113,120 @@
         /* Importação das fontes */
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Playfair+Display:wght@700&family=Pacifico&display=swap');
     </style>
+    <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- ... (mantenha todo o head existente) ... -->
+    <style>
+        /* ADICIONE ISSO AO SEU CSS EXISTENTE */
+        .preview-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .modelo-img {
+            width: 100%;
+            display: block;
+        }
+        
+        .texto-container {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            transform: translate(-50%, -50%);
+            left: 50%;
+        }
+        
+        /* Posições específicas para cada modelo */
+        .modelo1-texto { top: 40%; }
+        .modelo2-texto { top: 65%; }
+        .modelo3-texto { top: 50%; }
+    </style>
+    <!-- ... (mantenha o resto do HTML) ... -->
+
+    <script>
+        // Variáveis globais
+        let modeloAtual = 1;
+        let corTexto = '#ffffff';
+        let corFundo = '#3498db'; // Nova variável para cor de fundo
+
+        // Função para selecionar modelo
+        function selecionarModelo(num) {
+            modeloAtual = num;
+            document.querySelectorAll('.thumbnail').forEach(img => {
+                img.style.border = img.src.includes(`logo${num}.png`) 
+                    ? '3px solid #4CAF50' 
+                    : '2px solid #eee';
+            });
+            atualizarPreview();
+        }
+
+        // Função para atualizar a pré-visualização
+        function atualizarPreview() {
+            const nome = document.getElementById('nome').value || "Nome da Empresa";
+            const slogan = document.getElementById('slogan').value;
+            const fonte = document.getElementById('fonte').value;
+            corTexto = document.getElementById('cor-texto').value;
+            corFundo = document.getElementById('cor-fundo').value; // Novo campo
+
+            const previewDiv = document.getElementById('preview');
+            previewDiv.innerHTML = `
+                <div class="preview-container">
+                    <img src="modelos/logo${modeloAtual}.png" class="modelo-img"
+                         style="background-color: ${modeloAtual === 2 ? corFundo : 'transparent'};">
+                    <div class="texto-container modelo${modeloAtual}-texto"
+                         style="color: ${corTexto}; font-family: ${fonte}">
+                        <h1 style="margin:0; font-size: ${modeloAtual === 2 ? '1.8rem' : '2.2rem'};
+                            ${corTexto === '#ffffff' ? 'text-shadow: 1px 1px 2px rgba(0,0,0,0.7);' : ''}">
+                            ${nome}
+                        </h1>
+                        ${slogan ? `<p style="margin-top:8px; font-size:0.9rem;">${slogan}</p>` : ''}
+                    </div>
+                </div>
+            `;
+        }
+
+        // Função para gerar e baixar a logo
+        function gerarLogo() {
+            const previewDiv = document.getElementById('preview');
+            
+            html2canvas(previewDiv).then(canvas => {
+                const nome = document.getElementById('nome').value || "logo";
+                const link = document.createElement('a');
+                link.download = `logo-${nome.replace(/\s+/g, '-').toLowerCase()}.png`;
+                link.href = canvas.toDataURL();
+                link.click();
+            });
+        }
+
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', function() {
+            // Adicione este novo campo ao seu HTML:
+            const novoCampo = `
+                <div class="form-group">
+                    <label for="cor-fundo">Cor do Fundo (Modelo 2):</label>
+                    <input type="color" id="cor-fundo" value="#3498db">
+                </div>
+            `;
+            document.querySelector('.logo-generator').insertAdjacentHTML('beforeend', novoCampo);
+            
+            // Atualize os listeners
+            const campos = ['nome', 'slogan', 'fonte', 'cor-texto', 'cor-fundo'];
+            campos.forEach(id => {
+                document.getElementById(id).addEventListener('input', atualizarPreview);
+            });
+            
+            // Carrega a biblioteca html2canvas
+            const script = document.createElement('script');
+            script.src = 'https://html2canvas.hertzen.com/dist/html2canvas.min.js';
+            document.head.appendChild(script);
+            
+            // Inicializa o primeiro modelo
+            selecionarModelo(1);
+        });
+    </script>
 </head>
 <body>
     <header>
