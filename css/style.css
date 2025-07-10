@@ -315,3 +315,6 @@ footer::after {
 .texto-logo {
     background-color: rgba(255,0,0,0.3); /* Vermelho semi-transparente */
 }
+.modelo1-texto { top: 40%; }  /* Ajuste esses valores */
+.modelo2-texto { top: 65%; }
+.modelo3-texto { top: 50%; }
