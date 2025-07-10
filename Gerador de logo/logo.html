@@ -208,6 +208,52 @@
             
             // Atualiza preview
             atualizarPreview();
+            function atualizarPreview() {
+    const nome = document.getElementById('nome').value || "Nome da Empresa";
+    const slogan = document.getElementById('slogan').value;
+    const fonte = document.getElementById('fonte').value;
+    const corTexto = document.getElementById('cor-texto').value;
+
+    const previewDiv = document.getElementById('preview');
+    
+    // Configurações específicas por modelo
+    const configModelos = {
+        1: { top: '50%', left: '50%', fontSize: '2.2rem', sloganTop: '8px' },  // Modelo 1
+        2: { top: '55%', left: '50%', fontSize: '1.8rem', sloganTop: '6px' },  // Modelo 2
+        3: { top: '60%', left: '50%', fontSize: '2rem', sloganTop: '10px' }    // Modelo 3
+    };
+    
+    const config = configModelos[modeloAtual];
+
+    previewDiv.innerHTML = `
+        <img src="modelos/logo${modeloAtual}.png" style="width:100%; max-width:400px;">
+        <div class="texto-logo" style="
+            font-family: ${fonte};
+            color: ${corTexto};
+            top: ${config.top};
+            left: ${config.left};
+            transform: translate(-50%, -50%);
+            width: 80%;
+        ">
+            <h1 style="
+                margin:0; 
+                font-size: ${config.fontSize};
+                ${corTexto === '#ffffff' ? 'text-shadow: 1px 1px 3px rgba(0,0,0,0.5);' : ''}
+            ">
+                ${nome}
+            </h1>
+            ${slogan ? `
+            <p style="
+                margin-top:${config.sloganTop};
+                font-size:0.9rem;
+                color: ${corTexto}
+            ">
+                ${slogan}
+            </p>` : ''}
+        </div>
+    `;
+}
+            
         }
         
         // Função para atualizar a pré-visualização
