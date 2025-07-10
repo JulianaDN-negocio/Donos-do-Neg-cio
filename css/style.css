@@ -312,3 +312,6 @@ footer::after {
 #preview {
     position: relative;
 }
+.texto-logo {
+    background-color: rgba(255,0,0,0.3); /* Vermelho semi-transparente */
+}
