@@ -301,3 +301,14 @@ footer::after {
     text-decoration: underline;
     color: #1a5276;
 }
+.texto-logo {
+    position: absolute;
+    text-align: center;
+    width: 80%;
+    max-width: 300px;
+    pointer-events: none; /* Permite clicar na imagem abaixo */
+}
+
+#preview {
+    position: relative;
+}
