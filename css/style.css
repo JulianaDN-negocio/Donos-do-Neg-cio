@@ -301,3 +301,15 @@ footer::after {
     text-decoration: underline;
     color: #1a5276;
 }
+.banner-destaque {
+    transition: transform 0.3s ease;
+}
+.banner-destaque:hover {
+    transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+    .banner-destaque div {
+        flex-direction: column;
+    }
+}
