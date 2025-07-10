@@ -1,233 +1,93 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Gerador de Logo - Donos do Negócio</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3676495749738944" crossorigin="anonymous"></script>
+     <meta charset="UTF-8">
+    <title>Gerador de Logo Profissional</title>
+    <script src="https://cdn.jsdelivr.net/npm/@svgdotjs/svg.js@3.0/dist/svg.min.js"></script>
     <style>
-        /* ESTILOS ESPECÍFICOS DO GERADOR */
-        .logo-generator {
-            max-width: 600px;
-            margin: 2rem auto;
-            padding: 2rem;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        .logo-preview {
+            width: 400px;
+            height: 200px;
+            margin: 20px auto;
+            border: 1px solid #eee;
         }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-        }
-        
-        .form-group input[type="text"], 
-        .form-group select {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-        
-        .color-pickers {
-            display: flex;
-            gap: 1rem;
-            margin-top: 0.5rem;
-        }
-        
-        .modelos-container {
-            display: flex;
-            gap: 10px;
-            margin-top: 10px;
-        }
-        
-        .thumbnail {
-            width: 80px;
-            height: 80px;
-            object-fit: cover;
-            border: 2px solid #eee;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .thumbnail:hover, .thumbnail.active {
-            border: 2px solid #4CAF50;
-            transform: scale(1.05);
-        }
-        
-        #preview {
-            margin: 2rem 0;
-            padding: 1.5rem;
-            background: #f9f9f9;
-            border-radius: 8px;
-            text-align: center;
-            min-height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-        
-        .btn-gerar {
-            background: #4CAF50;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background 0.3s;
-            display: block;
-            width: 100%;
-            max-width: 200px;
-            margin: 20px auto 0;
-        }
-        
-        .btn-gerar:hover {
-            background: #45a049;
-        }
-        
-        .texto-logo {
-            position: absolute;
-            text-align: center;
-            width: 80%;
-            max-width: 300px;
-        }
-        
-        @media (max-width: 600px) {
-            .color-pickers, .modelos-container {
-                flex-direction: column;
-            }
-            .thumbnail {
-                width: 100%;
-                height: auto;
-            }
-        }
-
-        /* Importação das fontes */
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Playfair+Display:wght@700&family=Pacifico&display=swap');
     </style>
-    <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <!-- ... (mantenha todo o head existente) ... -->
-    <style>
-        /* ADICIONE ISSO AO SEU CSS EXISTENTE */
-        .preview-container {
-            position: relative;
-            width: 100%;
-            max-width: 400px;
-            margin: 0 auto;
-        }
-        
-        .modelo-img {
-            width: 100%;
-            display: block;
-        }
-        
-        .texto-container {
-            position: absolute;
-            width: 100%;
-            text-align: center;
-            transform: translate(-50%, -50%);
-            left: 50%;
-        }
-        
-        /* Posições específicas para cada modelo */
-        .modelo1-texto { top: 40%; }
-        .modelo2-texto { top: 65%; }
-        .modelo3-texto { top: 50%; }
-    </style>
-    <!-- ... (mantenha o resto do HTML) ... -->
+</head>
+<body>
+    <div class="logo-preview" id="preview"></div>
+    
+    <div class="controls">
+        <input type="text" id="nome" placeholder="Nome da Empresa">
+        <input type="color" id="cor1" value="#3498db">
+        <select id="template">
+            <option value="minimalista">Minimalista</option>
+            <option value="circular">Circular</option>
+            <option value="selo">Selo</option>
+        </select>
+        <button onclick="gerarLogo()">Baixar Logo</button>
+    </div>
 
     <script>
-        // Variáveis globais
-        let modeloAtual = 1;
-        let corTexto = '#ffffff';
-        let corFundo = '#3498db'; // Nova variável para cor de fundo
-
-        // Função para selecionar modelo
-        function selecionarModelo(num) {
-            modeloAtual = num;
-            document.querySelectorAll('.thumbnail').forEach(img => {
-                img.style.border = img.src.includes(`logo${num}.png`) 
-                    ? '3px solid #4CAF50' 
-                    : '2px solid #eee';
-            });
-            atualizarPreview();
-        }
-
-        // Função para atualizar a pré-visualização
-        function atualizarPreview() {
-            const nome = document.getElementById('nome').value || "Nome da Empresa";
-            const slogan = document.getElementById('slogan').value;
-            const fonte = document.getElementById('fonte').value;
-            corTexto = document.getElementById('cor-texto').value;
-            corFundo = document.getElementById('cor-fundo').value; // Novo campo
-
-            const previewDiv = document.getElementById('preview');
-            previewDiv.innerHTML = `
-                <div class="preview-container">
-                    <img src="modelos/logo${modeloAtual}.png" class="modelo-img"
-                         style="background-color: ${modeloAtual === 2 ? corFundo : 'transparent'};">
-                    <div class="texto-container modelo${modeloAtual}-texto"
-                         style="color: ${corTexto}; font-family: ${fonte}">
-                        <h1 style="margin:0; font-size: ${modeloAtual === 2 ? '1.8rem' : '2.2rem'};
-                            ${corTexto === '#ffffff' ? 'text-shadow: 1px 1px 2px rgba(0,0,0,0.7);' : ''}">
-                            ${nome}
-                        </h1>
-                        ${slogan ? `<p style="margin-top:8px; font-size:0.9rem;">${slogan}</p>` : ''}
-                    </div>
-                </div>
-            `;
-        }
-
-        // Função para gerar e baixar a logo
+        const draw = SVG().addTo('#preview').size(400, 200);
+        
         function gerarLogo() {
-            const previewDiv = document.getElementById('preview');
+            const nome = document.getElementById('nome').value || "Sua Marca";
+            const cor = document.getElementById('cor1').value;
+            const template = document.getElementById('template').value;
             
-            html2canvas(previewDiv).then(canvas => {
-                const nome = document.getElementById('nome').value || "logo";
-                const link = document.createElement('a');
-                link.download = `logo-${nome.replace(/\s+/g, '-').toLowerCase()}.png`;
-                link.href = canvas.toDataURL();
-                link.click();
-            });
+            draw.clear();
+            
+            // Templates profissionais
+            if (template === 'minimalista') {
+                draw.rect(400, 200).fill('#fff').stroke({ width: 1 });
+                draw.text(nome).font({
+                    family: 'Arial',
+                    size: 40,
+                    anchor: 'middle'
+                }).fill(cor).center(200, 100);
+                
+            } else if (template === 'circular') {
+                draw.circle(150).fill(cor).center(200, 100);
+                draw.text(nome).font({
+                    family: 'Arial',
+                    size: 24,
+                    anchor: 'middle'
+                }).fill('#fff').center(200, 100);
+                
+            } else if (template === 'selo') {
+                const grad = draw.gradient('radial', function(stop) {
+                    stop.at(0, cor);
+                    stop.at(1, SVG.Color(cor).darker(0.5));
+                });
+                
+                draw.path("M100,0 C150,50 250,50 300,0 C350,50 350,150 300,200 C250,150 150,150 100,200 C50,150 50,50 100,0 Z")
+                    .fill(grad).center(200, 100);
+                
+                draw.text(nome).font({
+                    family: 'Times New Roman',
+                    size: 30,
+                    anchor: 'middle',
+                    style: 'italic'
+                }).fill('#fff').center(200, 100);
+            }
+            
+            // Download
+            const svgData = draw.svg();
+            const link = document.createElement('a');
+            link.href = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgData);
+            link.download = 'logo-' + nome.toLowerCase().replace(/\s+/g, '-') + '.svg';
+            link.click();
         }
-
-        // Inicialização
-        document.addEventListener('DOMContentLoaded', function() {
-            // Adicione este novo campo ao seu HTML:
-            const novoCampo = `
-                <div class="form-group">
-                    <label for="cor-fundo">Cor do Fundo (Modelo 2):</label>
-                    <input type="color" id="cor-fundo" value="#3498db">
-                </div>
-            `;
-            document.querySelector('.logo-generator').insertAdjacentHTML('beforeend', novoCampo);
-            
-            // Atualize os listeners
-            const campos = ['nome', 'slogan', 'fonte', 'cor-texto', 'cor-fundo'];
-            campos.forEach(id => {
-                document.getElementById(id).addEventListener('input', atualizarPreview);
-            });
-            
-            // Carrega a biblioteca html2canvas
-            const script = document.createElement('script');
-            script.src = 'https://html2canvas.hertzen.com/dist/html2canvas.min.js';
-            document.head.appendChild(script);
-            
-            // Inicializa o primeiro modelo
-            selecionarModelo(1);
-        });
+        
+        // Atualização em tempo real
+        document.getElementById('nome').addEventListener('input', gerarLogo);
+        document.getElementById('cor1').addEventListener('input', gerarLogo);
+        document.getElementById('template').addEventListener('change', gerarLogo);
+        
+        // Primeiro render
+        gerarLogo();
     </script>
-</head>
+</body>
 <body>
     <header>
         <h1>DONOS DO NEGÓCIO</h1>
