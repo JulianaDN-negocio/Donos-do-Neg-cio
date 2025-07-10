@@ -1,93 +1,151 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-     <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerador de Logo Profissional</title>
     <script src="https://cdn.jsdelivr.net/npm/@svgdotjs/svg.js@3.0/dist/svg.min.js"></script>
     <style>
-        .logo-preview {
-            width: 400px;
-            height: 200px;
-            margin: 20px auto;
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .container {
+            display: flex;
+            min-height: calc(100vh - 140px);
+        }
+        
+        .menu-lateral {
+            width: 200px;
+            background-color: #34495e;
+            padding: 20px 0;
+        }
+        
+        .opcao {
+            padding: 15px;
+            border-bottom: 1px solid #2c3e50;
+        }
+        
+        .opcao a {
+            color: white;
+            text-decoration: none;
+            display: block;
+        }
+        
+        main {
+            flex: 1;
+            padding: 20px;
+        }
+        
+        .logo-generator {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h2 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        input[type="text"], select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .btn-gerar {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-gerar:hover {
+            background-color: #2980b9;
+        }
+        
+        #preview {
+            width: 100%;
+            height: 300px;
+            margin: 30px auto;
             border: 1px solid #eee;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        
+        .controls {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .menu-lateral {
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .opcao {
+                border-bottom: none;
+                border-right: 1px solid #2c3e50;
+                padding: 10px 15px;
+            }
+            
+            .controls {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
-<body>
-    <div class="logo-preview" id="preview"></div>
-    
-    <div class="controls">
-        <input type="text" id="nome" placeholder="Nome da Empresa">
-        <input type="color" id="cor1" value="#3498db">
-        <select id="template">
-            <option value="minimalista">Minimalista</option>
-            <option value="circular">Circular</option>
-            <option value="selo">Selo</option>
-        </select>
-        <button onclick="gerarLogo()">Baixar Logo</button>
-    </div>
-
-    <script>
-        const draw = SVG().addTo('#preview').size(400, 200);
-        
-        function gerarLogo() {
-            const nome = document.getElementById('nome').value || "Sua Marca";
-            const cor = document.getElementById('cor1').value;
-            const template = document.getElementById('template').value;
-            
-            draw.clear();
-            
-            // Templates profissionais
-            if (template === 'minimalista') {
-                draw.rect(400, 200).fill('#fff').stroke({ width: 1 });
-                draw.text(nome).font({
-                    family: 'Arial',
-                    size: 40,
-                    anchor: 'middle'
-                }).fill(cor).center(200, 100);
-                
-            } else if (template === 'circular') {
-                draw.circle(150).fill(cor).center(200, 100);
-                draw.text(nome).font({
-                    family: 'Arial',
-                    size: 24,
-                    anchor: 'middle'
-                }).fill('#fff').center(200, 100);
-                
-            } else if (template === 'selo') {
-                const grad = draw.gradient('radial', function(stop) {
-                    stop.at(0, cor);
-                    stop.at(1, SVG.Color(cor).darker(0.5));
-                });
-                
-                draw.path("M100,0 C150,50 250,50 300,0 C350,50 350,150 300,200 C250,150 150,150 100,200 C50,150 50,50 100,0 Z")
-                    .fill(grad).center(200, 100);
-                
-                draw.text(nome).font({
-                    family: 'Times New Roman',
-                    size: 30,
-                    anchor: 'middle',
-                    style: 'italic'
-                }).fill('#fff').center(200, 100);
-            }
-            
-            // Download
-            const svgData = draw.svg();
-            const link = document.createElement('a');
-            link.href = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgData);
-            link.download = 'logo-' + nome.toLowerCase().replace(/\s+/g, '-') + '.svg';
-            link.click();
-        }
-        
-        // Atualização em tempo real
-        document.getElementById('nome').addEventListener('input', gerarLogo);
-        document.getElementById('cor1').addEventListener('input', gerarLogo);
-        document.getElementById('template').addEventListener('change', gerarLogo);
-        
-        // Primeiro render
-        gerarLogo();
-    </script>
-</body>
 <body>
     <header>
         <h1>DONOS DO NEGÓCIO</h1>
@@ -116,43 +174,53 @@
             <section class="logo-generator">
                 <h2>Crie sua Logo Grátis</h2>
                 
-                <div class="form-group">
-                    <label for="nome">Nome da Empresa:</label>
-                    <input type="text" id="nome" placeholder="Ex: Padaria Estrela">
-                </div>
-                
-                <div class="form-group">
-                    <label for="slogan">Slogan (opcional):</label>
-                    <input type="text" id="slogan" placeholder="Ex: O melhor pão da região">
-                </div>
-                
-                <div class="form-group">
-                    <label for="fonte">Fonte do Texto:</label>
-                    <select id="fonte">
-                        <option value="'Montserrat', sans-serif">Moderno (Montserrat)</option>
-                        <option value="'Playfair Display', serif">Elegante (Playfair)</option>
-                        <option value="'Pacifico', cursive">Criativo (Pacifico)</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="cor-texto">Cor do Texto:</label>
-                    <input type="color" id="cor-texto" value="#ffffff">
-                </div>
-                
-                <div class="form-group">
-                    <label>Modelo de Logo:</label>
-                    <div class="modelos-container">
-                        <img src="modelos/logo1.png" onclick="selecionarModelo(1)" class="thumbnail" alt="Modelo 1">
-                        <img src="modelos/logo2.png" onclick="selecionarModelo(2)" class="thumbnail" alt="Modelo 2">
-                        <img src="modelos/logo3.png" onclick="selecionarModelo(3)" class="thumbnail" alt="Modelo 3">
+                <div class="controls">
+                    <div class="form-group">
+                        <label for="nome">Nome da Empresa:</label>
+                        <input type="text" id="nome" placeholder="Ex: Padaria Estrela">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="slogan">Slogan (opcional):</label>
+                        <input type="text" id="slogan" placeholder="Ex: O melhor pão da região">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="fonte">Fonte do Texto:</label>
+                        <select id="fonte">
+                            <option value="Arial, sans-serif">Arial (Moderno)</option>
+                            <option value="Georgia, serif">Georgia (Elegante)</option>
+                            <option value="'Courier New', monospace">Courier (Técnico)</option>
+                            <option value="'Brush Script MT', cursive">Brush Script (Criativo)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="cor-texto">Cor do Texto:</label>
+                        <input type="color" id="cor-texto" value="#000000">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="cor-fundo">Cor de Fundo:</label>
+                        <input type="color" id="cor-fundo" value="#ffffff">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="forma">Forma de Fundo:</label>
+                        <select id="forma">
+                            <option value="retangulo">Retângulo</option>
+                            <option value="circulo">Círculo</option>
+                            <option value="retangulo-arredondado">Retângulo Arredondado</option>
+                            <option value="losango">Losango</option>
+                            <option value="none">Sem Fundo</option>
+                        </select>
                     </div>
                 </div>
                 
                 <button class="btn-gerar" onclick="gerarLogo()">Baixar Logo</button>
                 
                 <div id="preview">
-                    <!-- Preview será gerado aqui -->
+                    <!-- Preview será gerado aqui dinamicamente -->
                 </div>
             </section>
         </main>
@@ -163,125 +231,82 @@
         <strong>Juliana Batista - (88) 98831-4077</strong></p>
     </footer>
     
-    <script src="https://unpkg.com/dom-to-image@2.6.0/dist/dom-to-image.min.js"></script>
     <script>
-        let modeloAtual = 1; // Modelo padrão
-        
-        // Função para selecionar modelo
-        function selecionarModelo(num) {
-            modeloAtual = num;
-            
-            // Atualiza visualização dos thumbnails
-            document.querySelectorAll('.thumbnail').forEach((img, index) => {
-                if (index + 1 === num) {
-                    img.classList.add('active');
-                } else {
-                    img.classList.remove('active');
-                }
-            });
-            
-            // Atualiza preview
-            atualizarPreview();
-            function atualizarPreview() {
-    const nome = document.getElementById('nome').value || "Nome da Empresa";
-    const slogan = document.getElementById('slogan').value;
-    const fonte = document.getElementById('fonte').value;
-    const corTexto = document.getElementById('cor-texto').value;
-
-    const previewDiv = document.getElementById('preview');
-    
-    // Configurações específicas por modelo
-    const configModelos = {
-        1: { top: '50%', left: '50%', fontSize: '2.2rem', sloganTop: '8px' },  // Modelo 1
-        2: { top: '55%', left: '50%', fontSize: '1.8rem', sloganTop: '6px' },  // Modelo 2
-        3: { top: '60%', left: '50%', fontSize: '2rem', sloganTop: '10px' }    // Modelo 3
-    };
-    
-    const config = configModelos[modeloAtual];
-
-    previewDiv.innerHTML = `
-        <img src="modelos/logo${modeloAtual}.png" style="width:100%; max-width:400px;">
-        <div class="texto-logo" style="
-            font-family: ${fonte};
-            color: ${corTexto};
-            top: ${config.top};
-            left: ${config.left};
-            transform: translate(-50%, -50%);
-            width: 80%;
-        ">
-            <h1 style="
-                margin:0; 
-                font-size: ${config.fontSize};
-                ${corTexto === '#ffffff' ? 'text-shadow: 1px 1px 3px rgba(0,0,0,0.5);' : ''}
-            ">
-                ${nome}
-            </h1>
-            ${slogan ? `
-            <p style="
-                margin-top:${config.sloganTop};
-                font-size:0.9rem;
-                color: ${corTexto}
-            ">
-                ${slogan}
-            </p>` : ''}
-        </div>
-    `;
-}
-            
-        }
+        // Inicializa o canvas SVG
+        const draw = SVG().addTo('#preview').size(400, 200);
         
         // Função para atualizar a pré-visualização
         function atualizarPreview() {
-            const nome = document.getElementById('nome').value || "Nome da Empresa";
+            const nome = document.getElementById('nome').value || "Sua Marca";
             const slogan = document.getElementById('slogan').value;
             const fonte = document.getElementById('fonte').value;
             const corTexto = document.getElementById('cor-texto').value;
+            const corFundo = document.getElementById('cor-fundo').value;
+            const forma = document.getElementById('forma').value;
             
-            const previewDiv = document.getElementById('preview');
-            previewDiv.innerHTML = `
-                <img src="modelos/logo${modeloAtual}.png" style="width:100%; max-width:400px;">
-                <div class="texto-logo" style="
-                    font-family: ${fonte};
-                    color: ${corTexto};
-                    ${modeloAtual === 3 ? 'top: 65%;' : 'top: 50%;'}
-                    transform: translate(-50%, -50%);
-                ">
-                    <h1 style="margin:0; font-size: ${modeloAtual === 2 ? '1.8rem' : '2.2rem'}; 
-                        ${corTexto === '#ffffff' ? 'text-shadow: 1px 1px 3px rgba(0,0,0,0.5);' : ''}">
-                        ${nome}
-                    </h1>
-                    ${slogan ? `<p style="margin-top:8px; font-size:0.9rem;">${slogan}</p>` : ''}
-                </div>
-            `;
+            draw.clear();
+            
+            // Cria a forma de fundo
+            if (forma !== 'none') {
+                if (forma === 'retangulo') {
+                    draw.rect(380, 180).fill(corFundo).center(200, 100);
+                } else if (forma === 'circulo') {
+                    draw.circle(150).fill(corFundo).center(200, 100);
+                } else if (forma === 'retangulo-arredondado') {
+                    draw.rect(380, 180).fill(corFundo).radius(20).center(200, 100);
+                } else if (forma === 'losango') {
+                    draw.polygon('200,20 380,100 200,180 20,100').fill(corFundo);
+                }
+            }
+            
+            // Adiciona o texto principal
+            const textGroup = draw.group();
+            const nomeText = textGroup.text(nome).font({
+                family: fonte,
+                size: 36,
+                anchor: 'middle',
+                weight: 'bold'
+            }).fill(corTexto).center(200, slogan ? 80 : 100);
+            
+            // Adiciona slogan se existir
+            if (slogan) {
+                textGroup.text(slogan).font({
+                    family: fonte,
+                    size: 18,
+                    anchor: 'middle',
+                    style: 'italic'
+                }).fill(corTexto).center(200, 130);
+            }
+            
+            // Centraliza o grupo de texto
+            textGroup.center(200, 100);
         }
         
         // Função para gerar e baixar a logo
         function gerarLogo() {
-            const previewDiv = document.getElementById('preview');
+            atualizarPreview();
             
-            domtoimage.toPng(previewDiv)
-                .then(function(dataUrl) {
-                    const nome = document.getElementById('nome').value || "logo";
-                    const link = document.createElement('a');
-                    link.download = `logo-${nome.replace(/\s+/g, '-').toLowerCase()}.png`;
-                    link.href = dataUrl;
-                    link.click();
-                })
-                .catch(function(error) {
-                    console.error('Erro ao gerar imagem:', error);
-                    alert('Ocorreu um erro. Recarregue a página e tente novamente!');
-                });
+            // Converte SVG para dados
+            const svgData = draw.svg();
+            const nome = document.getElementById('nome').value || "logo";
+            
+            // Cria link para download
+            const link = document.createElement('a');
+            link.href = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgData);
+            link.download = `logo-${nome.replace(/\s+/g, '-').toLowerCase()}.svg`;
+            link.click();
         }
         
-        // Atualiza preview quando qualquer campo muda
+        // Adiciona listeners para atualização em tempo real
         document.addEventListener('DOMContentLoaded', function() {
-            // Seleciona o primeiro modelo por padrão
-            selecionarModelo(1);
+            // Atualiza preview inicial
+            atualizarPreview();
             
             // Adiciona listeners para todos os campos
-            const campos = ['nome', 'slogan', 'fonte', 'cor-texto'];
+            const campos = ['nome', 'slogan', 'fonte', 'cor-texto', 'cor-fundo', 'forma'];
             campos.forEach(id => {
                 document.getElementById(id).addEventListener('input', atualizarPreview);
+                document.getElementById(id).addEventListener('change', atualizarPreview);
             });
         });
     </script>
