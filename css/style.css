@@ -49,7 +49,7 @@ body.pagina-donos header {
 
 /* ===== MENU LATERAL ATUALIZADO ===== */
 .menu-lateral {
-    background-color: var(--fundo-claro); /* Cor mais suave que branco puro */
+   --fundo-claro: #e6f2ff;
     width: 280px; /* Largura aumentada */
     padding: 25px 15px;
     box-shadow: 2px 0 5px rgba(0,0,0,0.1);
