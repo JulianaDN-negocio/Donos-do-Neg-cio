@@ -1,5 +1,5 @@
 :root {
-    /* Cores principais (mantive suas variáveis) */
+    /* Cores principais */
     --azul-escuro: #0a1f44;
     --azul-medio: #1a3a8f;
     --azul-claro: #4da6ff;
@@ -24,55 +24,107 @@ body {
     min-height: 100vh;
 }
 
-/* === SEÇÃO "SOBRE" === */
+/* ===== HEADER ===== */
+header {
+    background: linear-gradient(rgba(10, 31, 68, 0.8), rgba(26, 58, 143, 0.8)), 
+                url('../css/plano.jpg') center/cover no-repeat;
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    border-bottom: 5px solid var(--azul-claro);
+}
+
+/* ===== MENU LATERAL ===== */
+.menu-lateral {
+    width: 280px;
+    background-color: var(--fundo-claro);
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+.menu-lateral nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.menu-lateral nav a {
+    display: block;
+    padding: 12px 15px;
+    color: var(--texto-escuro);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.menu-lateral nav a:hover {
+    background-color: #e0e0e0;
+    padding-left: 20px;
+}
+
+/* ===== CONTEÚDO PRINCIPAL ===== */
+.conteudo-principal {
+    flex: 1;
+    padding: 20px;
+}
+
+/* ===== SEÇÃO SOBRE ===== */
 .sobre-container {
     display: flex;
-    align-items: flex-start; /* Alinha no topo */
     gap: 30px;
-    padding: 30px;
-    background-color: var(--fundo-claro);
-    border-radius: 10px;
-    margin: 20px;
+    align-items: flex-start;
+    margin-bottom: 30px;
 }
 
 .imagem-perfil {
-    width: 250px;
+    width: 200px;
     height: auto;
-    border-radius: 10px;
-    border: 3px solid var(--azul-claro);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-shadow: var(--sombra);
 }
 
 .sobre-texto {
-    flex: 1; /* Ocupa o espaço restante */
+    flex: 1;
 }
 
 .sobre-container h2 {
     color: var(--azul-escuro);
     margin-top: 0;
-    font-size: 1.8rem;
     border-bottom: 2px solid var(--azul-claro);
     padding-bottom: 10px;
 }
 
 .sobre-container p {
     text-align: justify;
-    margin-bottom: 15px;
     text-indent: 30px;
-    font-size: 1.1rem;
+    margin-bottom: 15px;
     line-height: 1.7;
 }
 
-/* === RESPONSIVIDADE === */
+/* ===== RODAPÉ ===== */
+footer {
+    background: linear-gradient(to right, var(--azul-escuro), var(--azul-medio));
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: auto;
+}
+
+/* ===== RESPONSIVIDADE ===== */
 @media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    
+    .menu-lateral {
+        width: 100%;
+    }
+    
     .sobre-container {
         flex-direction: column;
-        align-items: center;
     }
-
+    
     .imagem-perfil {
-        width: 80%;
-        max-width: 300px;
-        margin-bottom: 20px;
+        width: 100%;
+        max-width: 250px;
+        margin: 0 auto 20px;
     }
 }
