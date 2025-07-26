@@ -24,7 +24,7 @@ body {
     min-height: 100vh;
 }
 
-/* ===== HEADER ===== (ajustado conforme pedido) */
+/* ===== HEADER ===== */
 header {
     background: linear-gradient(rgba(10, 31, 68, 0.7), rgba(26, 58, 143, 0.7)), 
                 url('../css/plano.jpg') center/cover no-repeat;
@@ -36,17 +36,18 @@ header {
 
 header h1 {
     margin: 0;
-    font-weight: 700; /* Negrito */
+    font-weight: 700;
     font-size: 2.5rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-/* ===== MENU LATERAL ===== (cor --azul-escuro) */
+/* ===== MENU LATERAL ===== (mais estreito) */
 .menu-lateral {
-    width: 280px;
+    width: 220px;
     background-color: var(--azul-escuro);
-    padding: 20px;
+    padding: 20px 15px;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    transition: width 0.3s ease;
 }
 
 .menu-lateral nav ul {
@@ -56,17 +57,18 @@ header h1 {
 
 .menu-lateral nav a {
     display: block;
-    padding: 12px 15px;
+    padding: 10px 12px;
     color: var(--branco);
     text-decoration: none;
     transition: all 0.3s ease;
     border-left: 3px solid transparent;
+    font-size: 0.95rem;
 }
 
 .menu-lateral nav a:hover {
     background-color: rgba(255, 255, 255, 0.1);
     border-left: 3px solid var(--azul-claro);
-    padding-left: 20px;
+    padding-left: 15px;
 }
 
 /* ===== CONTEÚDO PRINCIPAL ===== */
@@ -76,7 +78,7 @@ header h1 {
     background-color: var(--branco);
 }
 
-/* ===== SEÇÃO "SOBRE" ===== (imagem + texto lado a lado) */
+/* ===== SEÇÃO "SOBRE" ===== */
 .sobre-container {
     display: flex;
     gap: 30px;
@@ -110,7 +112,7 @@ header h1 {
     line-height: 1.7;
 }
 
-/* ===== RODAPÉ ===== (cor --azul-escuro) */
+/* ===== RODAPÉ ===== */
 footer {
     background-color: var(--azul-escuro);
     color: var(--branco);
@@ -147,5 +149,12 @@ footer p {
     
     header h1 {
         font-size: 2rem;
+    }
+}
+
+/* Opcional: Menu ainda mais estreito em telas grandes */
+@media (min-width: 1200px) {
+    .menu-lateral {
+        width: 200px;
     }
 }
