@@ -80,16 +80,23 @@ body.pagina-donos header .logo-text {
 
 /* Menu lateral melhorado */
 .menu-lateral {
-    background: linear-gradient(to bottom, var(--azul-escuro), var(--azul-medio));
-    color: var(--branco);
-    width: 250px;
-    padding: 2rem 1.5rem;
-    box-shadow: var(--sombra);
-    border-right: 3px solid var(--azul-claro);
-    position: relative;
-    z-index: 5;
+    background-color: white; /* Fundo branco */
+    color: black; /* Texto preto */
+    font-family: "Times New Roman", Times, serif; /* Fonte Times */
+    /* Mantenha as outras propriedades existentes */
 }
 
+/* Se você quiser estilizar também os itens do menu */
+.menu-lateral a {
+    color: black; /* Cor dos links */
+    font-family: "Times New Roman", Times, serif; /* Fonte para os links */
+}
+
+/* Para os itens quando hover (mouse em cima) */
+.menu-lateral a:hover {
+    color: #555; /* Cinza escuro no hover */
+    background-color: #f0f0f0; /* Fundo cinza claro no hover */
+}
 /* ... (MANTENHA TODO O RESTO DO SEU CSS ORIGINAL AQUI) ... */
 
 /* ===== RESPONSIVIDADE ===== */
