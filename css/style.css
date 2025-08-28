@@ -40,35 +40,46 @@ header h1 {
     font-size: 2.5rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
-
-/* ===== MENU LATERAL ===== (mais estreito) */
+* ===== MENU LATERAL VISTOSO ===== */
 .menu-lateral {
-    width: 220px;
-    background-color: var(--azul-escuro);
-    padding: 20px 15px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
-    transition: width 0.3s ease;
+    width: 260px;
+    background: var(--gradiente-menu);
+    padding: 25px 15px;
+    box-shadow: var(--sombra-destaque);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    border-radius: 0 20px 20px 0;
+    position: relative;
+    overflow: hidden;
+    z-index: 10;
 }
 
-.menu-lateral nav ul {
-    list-style: none;
-    padding: 0;
+.menu-lateral::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: -1;
 }
 
-.menu-lateral nav a {
-    display: block;
-    padding: 10px 12px;
-    color: var(--branco);
-    text-decoration: none;
-    transition: all 0.3s ease;
-    border-left: 3px solid transparent;
-    font-size: 0.95rem;
+.menu-lateral::after {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    left: -80px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.1);
+    z-index: -1;
 }
 
-.menu-lateral nav a:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-left: 3px solid var(--azul-claro);
-    padding-left: 15px;
+.menu-lateral:hover {
+    width: 280px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
 }
 
 /* ===== CONTEÚDO PRINCIPAL ===== */
